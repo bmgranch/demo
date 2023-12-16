@@ -53,16 +53,13 @@ public class CucumberHooks {
 		int i = 1;
 		for (i = 1; i <= 4; i++) {
 			try {
-				this.applicationContext.getBean(WebDriver.class).get(getBaseUrl());
+				this.applicationContext.getBean(WebDriver.class);
 
 				i = 4;
 			} catch (UnreachableBrowserException unreachableBrowserException) {
 				log.info("Base Url Launch" + i + " FAILED");
 
 				log.info(i + "Relaunch baseurl UnreachableBrowserException exception : " + unreachableBrowserException.getMessage());
-			} catch (Exception e) {
-				log.info("Base Url Launch" + i + " FAILED");
-				log.info(i + "Relaunch baseurl exception : " + e.getMessage());
 			}
 		}
 	}
@@ -75,19 +72,10 @@ public class CucumberHooks {
 		}
 		if (StringUtils.equalsIgnoreCase(screenshotAllScenarios, "FAILED") && scenario.isFailed()) {
 			captureScreenshot(scenario);
-			clickOnAlertIfPresent();
 		}
 		if (StringUtils.equalsIgnoreCase(screenshotAllScenarios, "ALL")) {
 			captureScreenshot(scenario);
 			clickOnAlertIfPresent();
-		}
-		try {
-			clickOnAlertIfPresent();
-			log.info("Driver Quit @After Scenario");
-			this.applicationContext.getBean(WebDriver.class).quit();
-		} catch (WebDriverException exception) {
-			log.info("@After Exception to quit driver" + exception.getMessage());
-			this.applicationContext.getBean(WebDriver.class).quit();
 		}
 	}
 

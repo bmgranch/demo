@@ -10,12 +10,11 @@
 		</layout>
 	</appender>
 
-	<logger name="lcc.uitests" level="debug" additivity="false">
+	<logger name="demo.tests" level="debug" additivity="false">
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
 	<logger name="org.testcontainers" level="WARN" />
-	<logger name="com.github.dockerjava" level="WARN" />
 
 	<root level="warn">
 		<appender-ref ref="CONSOLE" />

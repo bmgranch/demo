@@ -23,4 +23,8 @@ public class ConfigBean {
         return env.getProperty(testEnv + "." + domain + ".web.url");
     }
 
+    public String getCardGameBaseUrl(){
+        return env.getProperty(testEnv + "." + "dice" + ".web.url");
+    }
+
 }
